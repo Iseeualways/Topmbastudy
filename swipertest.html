@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>testing</title>
+
+  <!-- Bootstrap + Slick + AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      background: #6c6c6c;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+    }
+
+    /* Section Title */
+    h2 {
+      font-weight: 600;
+      color: #ffa94d;
+    }
+
+    p {
+      color: #d1d1d1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Filter Buttons */
+    .city-filters {
+      margin-top: 30px;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 2px solid #00b7ff;
+      color: #00b7ff;
+      padding: 8px 22px;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      margin: 5px;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: linear-gradient(90deg, #00b7ff, #ffa94d);
+      color: #000;
+      border: none;
+    }
+
+    /* Slick Carousel Buttons */
+    .slick-prev-btn,
+    .slick-next-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffa94d;
+      border: none;
+      font-size: 2rem;
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    .slick-prev-btn:hover,
+    .slick-next-btn:hover {
+      background: linear-gradient(90deg, #ffa94d, #00b7ff);
+      color: #000;
+    }
+
+    .slick-prev-btn {
+      left: -40px;
+    }
+
+    .slick-next-btn {
+      right: -40px;
+    }
+
+    /* College Card */
+    .college-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .college-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 10px 30px rgba(0, 183, 255, 0.25);
+    }
+
+    .card-image {
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.6s ease;
+    }
+
+    .college-card:hover .card-image {
+      transform: scale(1.08);
+    }
+
+    .card-text {
+      padding: 18px;
+      color: #0a0e27;
+    }
+
+    .card-text h5 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #0a0e27;
+    }
+
+    .card-text .location {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .card-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .btn-rect {
+      background: linear-gradient(90deg, #0b2a66, #0056b3);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn-rect:hover {
+      background: linear-gradient(90deg, #ffa94d, #ff7a00);
+      color: #000;
+      transform: translateY(-2px);
+    }
+
+    .btn-viewmore {
+      background: transparent;
+      border: none;
+      color: #0b2a66;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .btn-viewmore::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, #00b7ff, #ffa94d);
+      transition: width 0.3s ease;
+    }
+
+    .btn-viewmore:hover::after {
+      width: 100%;
+    }
+
+    /* Centered Button */
+    .btn-orange {
+      background-color: #000;
+      color: #ffa94d;
+      border: 2px solid #ffa94d;
+      border-radius: 0;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-orange::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75px;
+      width: 50px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: skewX(-25deg);
+      transition: left 0.7s ease;
+    }
+
+    .btn-orange:hover::before {
+      left: 120%;
+    }
+
+    .btn-orange:hover {
+      background-color: #ffa94d;
+      color: #fff;
+    }
+
+    .center-btn {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    
+    .college-carousal{
+        max-width: 1200px;
+    }
+  </style>
+</head>
+
+<body>
+<section class="college-slider py-5">
+    <div class="container-fluid">
+      <h2 class="text-center mb-4">Our Colleges</h2>
+
+
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+
+
+          <div class="swiper-slide">
+            <div class="card-college">
+              <img src="https://api.bangalorestudy.com:3000/collegegallery/image1679996475650.png" alt="College 1">
+              <div class="card-body">
+                <h4>Engineering College</h4>
+                <p>Top-ranked institute with world-class facilities.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn "><i class="fa-solid fa-magnifying-glass-arrow-right"></i></button>
+                  <button class="btn ">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="swiper-slide">
+            <div class="card-college">
+              <img src="https://api.bangalorestudy.com:3000/collegegallery/image1679996238255.png" alt="College 2">
+              <div class="card-body">
+                <h4>Medical College</h4>
+                <p>State-of-the-art hospital training and research.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn "><i class="fa-solid fa-magnifying-glass-arrow-right"></i></button>
+                  <button class="btn ">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="card-college">
+              <img src="https://api.bangalorestudy.com:3000/collegegallery/image1679996749771.png" alt="College 3">
+              <div class="card-body">
+                <h4>Law College</h4>
+                <p>Leaders in legal education and advocacy.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn "><i class="fa-solid fa-magnifying-glass-arrow-right"></i></button>
+                  <button class="btn ">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="swiper-slide">
+            <div class="card-college">
+              <img src="https://api.bangalorestudy.com:3000/collegegallery/image1679996706148.png" alt="College 4">
+              <div class="card-body ">
+                <h4>Dental College</h4>
+                <p>Modern dental research and clinical training.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn "><i class="fa-solid fa-magnifying-glass-arrow-right"></i></button>
+                  <button class="btn ">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="card-college">
+              <img src=" https://api.bangalorestudy.com:3000/collegegallery/image1679996706148.png" alt="College 4">
+              <div class="card-body">
+                <h4>Dental College</h4>
+                <p>Modern dental research and clinical training.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn "><i class="fa-solid fa-magnifying-glass-arrow-right"></i></button>
+                  <button class="btn ">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="card-college">
+              <img src="https://api.bangalorestudy.com:3000/collegegallery/image1679996672266.png" alt="College 4">
+              <div class="card-body">
+                <h4>Dental College</h4>
+                <p>Modern dental research and clinical training.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn "><i class="fa-solid fa-magnifying-glass-arrow-right"></i></button>
+                  <button class="btn ">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="card-college">
+              <img src="https://api.bangalorestudy.com:3000/collegegallery/image1679996834736.png" alt="College 4">
+              <div class="card-body">
+                <h4>Dental College</h4>
+                <p>Modern dental research and clinical training.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn "><i class="fa-solid fa-magnifying-glass-arrow-right"></i></button>
+                  <button class="btn ">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="card-college">
+              <img src="https://api.bangalorestudy.com:3000/collegegallery/image1679996869869.png" alt="College 4">
+              <div class="card-body">
+                <h4>Dental College</h4>
+                <p>Modern dental research and clinical training.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn "><i class="fa-solid fa-magnifying-glass-arrow-right"></i></button>
+                  <button class="btn ">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      const $carousel = $(".college-carousel");
+      const allCards = $(".college-card").clone();
+
+      function initCarousel() {
+        $carousel.slick({
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: true,
+          arrows: false,
+          autoplay: true,
+          autoplaySpeed: 2500,
+          speed: 600,
+          responsive: [
+            { breakpoint: 992, settings: { slidesToShow: 2 } },
+            { breakpoint: 576, settings: { slidesToShow: 1 } },
+          ],
+        });
+      }
+
+      initCarousel();
+
+      $(".slick-prev-btn").click(() => $carousel.slick("slickPrev"));
+      $(".slick-next-btn").click(() => $carousel.slick("slickNext"));
+
+      $(".filter-btn").click(function () {
+        const city = $(this).data("city");
+        $(".filter-btn").removeClass("active");
+        $(this).addClass("active");
+
+        $carousel.slick("unslick").empty();
+
+        let filteredCards =
+          city === "all" ? allCards.clone() : allCards.filter(`[data-city="${city}"]`).clone();
+
+        while (filteredCards.length < 6) {
+          filteredCards = filteredCards.add(filteredCards.clone());
+        }
+
+        $carousel.append(filteredCards);
+        initCarousel();
+      });
+    });
+  </script>
+</body>
+</html>

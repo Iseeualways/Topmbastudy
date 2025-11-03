@@ -1,0 +1,1446 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Specialization</title>
+    <link rel="preload" as="image" href="poster.jpg">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Free CDN (no SRI/crossorigin to avoid blocking) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <style>
+        /* Vibrant gradient background */
+        .vibrant-gradient {
+            background: linear-gradient(135deg,
+                    #00a2e1 0%,
+                    /* Bright blue */
+                    #feda16 35%,
+                    /* Vibrant yellow */
+                    #f1652a 70%,
+                    /* Strong orange/red */
+                    #0b7bbf 100%
+                    /* Dark blue */
+                );
+        }
+
+        :root {
+            --blue: #0b7bbf;
+            --light-blue: #00a2e1;
+            --orange: #f1652a;
+            --yellow: #feda16;
+            --und-green: #ffae00;
+            --ink: #ffffff;
+            --paper: #ffffff;
+            --headline: clamp(26px, 2.5vw + 16px, 40px);
+            --mega: clamp(88px, 15vw, 260px);
+            --gutter: clamp(16px, 2vw, 28px);
+            --safe-left: clamp(16px, 6vw, 96px);
+            --safe-bottom: clamp(16px, 6vh, 120px);
+        }
+
+        p {
+            color: black;
+            font-size: 16px;
+        }
+
+        h4 {
+            color: #00244c;
+            font-weight: 700;
+            font-size: 32px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: "Poppins" !important;
+            color: var(--paper);
+            background: var(--ink);
+        }
+
+        .infobar {
+            background: #003556;
+            color: #fff;
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px var(--gutter);
+            height: 50px;
+
+
+        }
+
+        .infobar .left,
+        .infobar .center,
+        .infobar .right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-inline: 65px;
+        }
+
+        .infobar .left a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 18px;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .infobar .left a:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .infobar .center {
+            justify-content: center;
+            flex: 1;
+            text-align: center;
+        }
+
+        .infobar .right {
+            justify-content: flex-end;
+        }
+
+        /* Main navbar */
+        .topbar {
+            background: #ffffff;
+            color: #fff;
+            height: 70px;
+        }
+
+        .topbar-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--gutter);
+            gap: 20px;
+            height: 100%;
+        }
+
+        .btn-orange {
+            position: relative;
+            display: inline-block;
+            background-color: var(--orange) !important;
+            color: #ffa94d;
+            border: 2px solid #ffa94d;
+            border-radius: 0;
+
+            font-weight: 600;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-orange::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -75%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(120deg,
+                    rgba(255, 255, 255, 0.3) 0%,
+                    rgba(255, 255, 255, 0.6) 50%,
+                    rgba(255, 255, 255, 0.3) 100%);
+            transform: skewX(-25deg);
+            transition: all 0.5s ease;
+        }
+
+        .btn-orange:hover {
+            background-color: #ffa94d;
+            color: #ffffff;
+
+        }
+
+        .btn-orange:hover::before {
+            left: 125%;
+            transition: all 0.5s ease;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .brand img {
+            height: 75px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 16px;
+            opacity: .9;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+    </style>
+    </head>
+
+    <body>
+
+        <!-- Thin top info bar -->
+        <div class="infobar">
+            <div class="left">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="social facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" aria-label="X (Twitter)" class="social twitter">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="social instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="social linkedin">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+
+
+
+                <!-- ✨ New pulsing text -->
+                <span class="pulse-text">Top MBA Admissions 2026</span>
+            </div>
+
+            <style>
+                /* Flowing gradient + pulsing glow + soft grow/shrink */
+                .pulse-text {
+                    position: relative;
+                    font-weight: 700;
+                    font-size: 23px;
+                    margin-left: 120px;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    color: #ffffff;
+                    /* fallback color */
+                    background: linear-gradient(90deg,
+                            rgba(255, 255, 255, 0.2) 0%,
+                            #feda16 20%,
+                            #f1652a 40%,
+                            #00b7ff 60%,
+                            rgba(255, 255, 255, 0.2) 100%);
+                    background-size: 200% auto;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    animation:
+                        highlightFlow 3.5s linear infinite,
+                        pulseGlow 2.5s ease-in-out infinite,
+                        pulseScale 3s ease-in-out infinite;
+                    white-space: nowrap;
+                    display: inline-block;
+                }
+
+                /* Gradient flowing animation */
+                @keyframes highlightFlow {
+                    0% {
+                        background-position: 200% center;
+                    }
+
+                    50% {
+                        background-position: 100% center;
+                    }
+
+                    100% {
+                        background-position: -200% center;
+                    }
+                }
+
+                /* Soft glowing pulse */
+                @keyframes pulseGlow {
+                    0% {
+                        filter: brightness(0.9) drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
+                    }
+
+                    50% {
+                        filter: brightness(1.5) drop-shadow(0 0 8px rgba(255, 213, 0, 0.6));
+                    }
+
+                    100% {
+                        filter: brightness(0.9) drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
+                    }
+                }
+
+                /* Gentle size pulse (grow and shrink) */
+                @keyframes pulseScale {
+                    0% {
+                        transform: scale(1);
+                    }
+
+                    50% {
+                        transform: scale(1.08);
+                    }
+
+                    100% {
+                        transform: scale(1);
+                    }
+                }
+
+
+                .left {
+                    display: flex;
+                    gap: 10px;
+                }
+
+                .left a.social {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 26px;
+                    height: 26px;
+                    border-radius: 50%;
+                    color: #fff;
+                    font-size: 16px;
+                    transition: all 0.3s ease;
+
+                }
+
+                .left i {
+                    margin-top: 2px;
+                }
+
+
+                .facebook {
+                    background-color: #1877f2;
+                }
+
+                .twitter {
+                    background-color: #000000;
+                }
+
+
+                .instagram {
+                    background: radial-gradient(circle at 30% 107%, #a19b58 0%,
+                            #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+                }
+
+
+                .linkedin {
+                    background-color: #0077b5;
+                }
+
+                .left a.social:hover {
+                    transform: translateY(-3px) scale(1.05);
+                    opacity: 0.9;
+                }
+            </style>
+
+
+
+            <div class="right d-flex align-items-center gap-4 fs-5 flex-wrap text-white">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="fa-solid fa-phone" style="color: red;"></i>
+                    <span class="fs-6">1800 120 8696</span>
+                </div>
+
+                <div class="d-flex align-items-center gap-2">
+                    <i class="fa-solid fa-envelope" style="color: #fff;"></i>
+                    <span class="fs-6">info@topmbastudy.com</span>
+                </div>
+
+                <button class="btn py-1 px-3 btn-orange">Write a Review</button>
+            </div>
+
+            <style>
+                .right i {
+                    margin-top: 4px;
+                }
+
+                .btn-orange {
+                    background-color: #fd9b28;
+                    color: #fff !important;
+                    border: none;
+                    border-radius: 8px !important;
+                    transition: all 0.3s ease;
+                }
+
+                .btn-orange:hover {
+                    background-color: #e9851f;
+
+                }
+            </style>
+
+        </div>
+
+
+        <!-- Main navbar -->
+        <header class="topbar" role="banner">
+            <div class="topbar-inner">
+                <a class="brand" href="#">
+                    <img src="Top MBA Study Logo_Color.svg" alt="Logo">
+                </a>
+
+                <nav aria-label="Primary">
+                    <a href="#">Home</a>
+
+                    <div class="dropdown">
+                        <a href="#">About Us</a>
+                        <div class="dropdown-content">
+                            <a href="#">Who We Are</a>
+                            <a href="#">Vision & Mission</a>
+                            <a href="#">What Do We Offer?</a>
+                            <a href="#">Why Choose Us?</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <a href="#">Top MBA Colleges</a>
+                        <div class="dropdown-content top-colleges">
+                            <div class="dropdown-column">
+                                <h4>Colleges By State</h4>
+                                <a href="#">Maharashtra</a>
+                                <a href="#">Karnataka</a>
+                                <a href="#">Tamil Nadu</a>
+                                <a href="#">Delhi NCR</a>
+                                <a href="#">West Bengal</a>
+                                <a href="#">Gujarat</a>
+                                <a href="#" class="view-more">View More <i class="fa-solid fa-location-arrow"></i></a>
+                            </div>
+
+                            <div class="dropdown-column">
+                                <h4>Colleges By City</h4>
+                                <a href="#">Mumbai</a>
+                                <a href="#">Bangalore</a>
+                                <a href="#">Chennai</a>
+                                <a href="#">Pune</a>
+                                <a href="#">Delhi</a>
+                                <a href="#">Hyderabad</a>
+                                <a href="#">Kolkata</a>
+                                <a href="#" class="view-more">View More <i class="fa-solid fa-location-arrow"></i></a>
+                            </div>
+
+                            <div class="dropdown-column">
+                                <h4>Popular Colleges</h4>
+                                <a href="#">IIM Ahmedabad</a>
+                                <a href="#">IIM Bangalore</a>
+                                <a href="#">ISB Hyderabad</a>
+                                <a href="#">XLRI Jamshedpur</a>
+                                <a href="#">SPJIMR Mumbai</a>
+                                <a href="#">MDI Gurgaon</a>
+                                <a href="#">NMIMS Mumbai</a>
+                                <a href="#" class="view-more">View More <i class="fa-solid fa-location-arrow"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <a href="#">MBA Specializations</a>
+                        <div class="dropdown-content specializations">
+                            <div class="spec-grid">
+                                <a href="#"><img src="specializations-imgs/Marketing.svg" width="20%" alt=""> Marketing
+                                    Management</a>
+                                <a href="#"><img src="specializations-imgs/Finance.svg" width="20%" alt=""> Finance
+                                    Management</a>
+                                <a href="#"><img src="specializations-imgs/Human Resource.svg" width="20%" alt=""> Human
+                                    Resource Management</a>
+                                <a href="#"><img src="specializations-imgs/International Business.svg" width="20%"
+                                        alt="">
+                                    International Business</a>
+                                <a href="#"><img src="specializations-imgs/International Business.svg" width="20%"
+                                        alt="">
+                                    Operations Management</a>
+                                <a href="#"><img src="specializations-imgs/Information Technology.svg" width="20%"
+                                        alt="">
+                                    Information Technology</a>
+                                <a href="#"><img src="specializations-imgs/Business Analytics.svg" width="20%" alt="">
+                                    Business Analytics</a>
+                                <a href="#"><img src="specializations-imgs/Entrepreneurship.svg" width="20%" alt="">
+                                    Entrepreneurship</a>
+                                <a href="#"><img src="specializations-imgs/Entrepreneurship.svg" width="20%" alt="">
+                                    Healthcare Management</a>
+                                <a href="#"><img src="specializations-imgs/Logistics & Supply Chain.svg" width="20%"
+                                        alt="">
+                                    Logistics & Supply Chain</a>
+                                <a href="#"><img src="specializations-imgs/Retail Management.svg" width="20%" alt="">
+                                    Retail
+                                    Management</a>
+                                <a href="#"><img src="specializations-imgs/Tourism & Hospitality.svg" width="20%"
+                                        alt="">
+                                    Tourism & Hospitality</a>
+                                <a href="#"><img src="specializations-imgs/Project Management.svg" width="20%" alt="">
+                                    Project Management</a>
+                                <a href="#"><img src="specializations-imgs/Agri-Business.svg" width="20%" alt="">
+                                    Agri-Business</a>
+                                <a href="#"><img src="specializations-imgs/Media & Communication.svg" width="20%"
+                                        alt="">
+                                    Media & Communication</a>
+                                <a href="#" class="view-more mx-3 fs-6">View More <i
+                                        class="fa-solid fa-location-arrow"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <a href="#">Entrance Exam</a>
+                        <div class="dropdown-content">
+                            <a href="#">CAT</a>
+                            <a href="#">XAT</a>
+                            <a href="#">CMAT</a>
+                            <a href="#">ATMA</a>
+                            <a href="#">NMAT by GMAC</a>
+                            <a href="#">SNAP</a>
+                            <a href="#">GMAT</a>
+                            <a href="#">KMAT</a>
+                            <a href="#">PGCET</a>
+                            <a href="#">CUET-PG</a>
+                            <a href="#" class="view-more">View More <i class="fa-solid fa-location-arrow"></i></a>
+                            <!-- <a href="#">MAH-CET</a>
+                        <a href="#">AP ICET</a>
+                        <a href="#">TANCET</a> -->
+                        </div>
+                    </div>
+                    <a href="#">Articles</a>
+                    <a href="#">More</a>
+                </nav>
+
+                <style>
+                    /* --------------------
+   Base Setup
+-------------------- */
+                    .spec-grid img {
+                        border: 1px solid rgb(228, 228, 228);
+                        background-color: #dcecfa;
+                        border-radius: 20px;
+                    }
+
+                    /* --------------------
+   Navigation & Dropdown Base
+-------------------- */
+                    nav {
+                        display: flex;
+                        justify-content: center;
+                        gap: 30px;
+                        position: relative;
+                    }
+
+                    .dropdown {
+                        position: relative;
+                    }
+
+                    .dropdown>a {
+                        position: relative;
+                        z-index: 2;
+                    }
+
+                    .dropdown-content {
+                        position: absolute;
+                        top: 100%;
+                        left: 50%;
+                        transform: translateX(-50%) translateY(10px);
+                        opacity: 0;
+                        pointer-events: none;
+                        background: #ffffff;
+                        min-width: 200px;
+                        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+                        border-radius: 10px;
+                        padding: 20px;
+                        z-index: 999;
+                        transition: all 0.25s ease;
+                        font-family: "Poppins", sans-serif !important;
+                    }
+
+                    .dropdown:hover .dropdown-content {
+                        opacity: 1;
+                        transform: translateX(-50%) translateY(0);
+                        pointer-events: auto;
+                    }
+
+                    /* --------------------
+   Headings
+-------------------- */
+                    .dropdown-content h4,
+                    .dropdown-column h4 {
+                        color: var(--orange);
+                        font-size: 17px;
+                        font-weight: 600;
+                        margin-bottom: 10px;
+                    }
+
+                    /* --------------------
+   Dropdown Links with Arrow Animation
+-------------------- */
+                    .dropdown-content a,
+                    .dropdown-column a {
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                        gap: 6px;
+                        text-decoration: none;
+                        color: #000;
+                        font-size: 14.5px;
+                        padding: 6px 10px;
+                        border-radius: 6px;
+                        font-weight: 500;
+                        transition: all 0.35s ease;
+                        transform: translateX(0);
+                    }
+
+                    /* Hidden arrow before hover */
+                    .dropdown-content a::before,
+                    .dropdown-column a::before {
+                        content: "\f101";
+                        /* Font Awesome right arrow (fa-arrow-right) */
+                        font-family: "Font Awesome 6 Free";
+                        font-weight: 800 !important;
+                        opacity: 0;
+                        transform: translateX(-6px);
+                        transition: all 0.35s ease;
+                        font-size: 13px;
+                        color: var(--orange);
+
+                    }
+
+                    /* On hover: arrow appears and moves right, text slides a bit */
+                    .dropdown-content a:hover,
+                    .dropdown-column a:hover {
+                        color: #002147;
+                        transform: translateX(4px);
+                        font-weight: 700 !important;
+                    }
+
+                    .dropdown-content a:hover::before,
+                    .dropdown-column a:hover::before {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+
+                    /* --------------------
+   View More Button
+-------------------- */
+                    .dropdown-content .view-more {
+                        display: inline-block;
+                        color: rgb(0, 76, 114);
+                        border-radius: 20px;
+                        font-size: 13px;
+                        text-decoration: none;
+                        transition: background 0.3s ease;
+                    }
+
+                    /* --------------------
+   Layout Variants
+-------------------- */
+                    .spec-grid {
+                        min-width: 380px;
+                    }
+
+                    .dropdown-content.top-colleges {
+                        min-width: 800px;
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        gap: 30px;
+                    }
+
+                    .dropdown-content.specializations {
+                        min-width: 420px;
+                        columns: 2;
+                    }
+
+                    /* --------------------
+   Dropdown Fade Animation
+-------------------- */
+                    @keyframes fadeIn {
+                        from {
+                            opacity: 0;
+                            transform: translateY(10px);
+                        }
+
+                        to {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+                </style>
+            </div>
+        </header>
+
+
+        <!-- =========================================================Hero Section -->
+
+        <!-- =========================================================Hero Section -->
+
+        <section class="hero">
+            <!-- SVG Background -->
+            <svg class="svg-bg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#000" fill-opacity="1"
+                    d="M0,64L48,101.3C96,139,192,213,288,224C384,235,480,181,576,176C672,171,768,213,864,234.7C960,256,1056,256,1152,229.3C1248,203,1344,149,1392,122.7L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z">
+
+                </path>
+            </svg>
+
+            <!-- Hero Content -->
+            <div class="hero-content">
+                <h1 class="mb-2 text-start">Best MBA to Study in India and Abroad</h1>
+                <div class="search-box">
+                    <input type="text" placeholder="Find Your Collge" />
+                    <div class="form-bttn ">
+                        <button class="btn btn-orange px- mt-22 py-2 mt-2">Apply Now</button>
+                    </div>
+                </div>
+                <h1 class="mb-2 text-start mt-2">Trending Courses</h1>
+
+                <div class="label-container">
+                    <div class="label">Marketing</div>
+                    <div class="label">Finance</div>
+                    <div class="label">Human Resource</div>
+                    <div class="label">International Business</div>
+                    <div class="label">Operations Management</div>
+                    <div class="label">Information Technology</div>
+                    <div class="label">Business Analytics</div>
+                </div>
+            </div>
+
+        </section>
+        <nav class="breadcrumb-nav text-dark">
+            <a href="#" class="breadcrumb-link">Home <i class="fa-solid fa-chevron-right"></i> Specialization</a>
+
+        </nav>
+
+
+        <style>
+            .label-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 9px;
+                justify-content: center;
+                margin-top: 30px;
+                margin-left: 80px;
+            }
+
+            .label {
+                background: #00000020;
+                /* border: 1px solid #d9e2f1; */
+                border-radius: 10px;
+                padding: 5px 10px;
+                font-size: 16px;
+                font-weight: 500;
+                color: #ffffff;
+                transition: 0.3s ease;
+                cursor: pointer;
+            }
+
+            .label:hover {
+                background: #ffffff52;
+                color: #fff;
+
+                box-shadow: 0 4px 8px rgba(43, 92, 255, 0.2);
+            }
+
+            @media (max-width: 768px) {
+                .label {
+                    flex: 1 1 45%;
+                    text-align: center;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .label {
+                    flex: 1 1 100%;
+                }
+            }
+
+
+            .breadcrumb-nav {
+                display: flex;
+                align-items: center;
+                font-family: 'Poppins', sans-serif;
+                font-size: 15px;
+                font-weight: 500;
+                color: #333;
+                justify-content: start;
+                margin-left: 116px;
+            }
+
+            .breadcrumb-link {
+                text-decoration: none;
+                color: #000;
+                transition: color 0.3s ease;
+            }
+
+            .breadcrumb-link:hover {
+                color: var(--orange, #ff7b00);
+            }
+
+            .breadcrumb-nav i {
+                font-size: 13px;
+                color: #666;
+            }
+
+            .breadcrumb-current {
+                color: #888;
+            }
+
+            /* Hero Section */
+            .hero {
+                position: relative;
+                background: radial-gradient(circle at 20% 30%, var(--blue), var(--orange));
+                color: white;
+                min-height: 40vh;
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                text-align: center;
+                padding: 2rem;
+                overflow: hidden;
+
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                font-weight: 700;
+                margin-left: 80px;
+
+            }
+
+
+            .search-box {
+                background: rgba(96, 89, 89, 0);
+                backdrop-filter: blur(10px);
+                border-radius: 20px;
+                padding: 10px 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                max-width: 900px;
+                margin-inline: 60px;
+
+
+            }
+
+            .search-box input {
+                padding: 16px 16px;
+                border: none;
+                border-radius: 10px;
+                font-size: 1rem;
+                outline: none;
+                flex: 1;
+                background: rgba(255, 255, 255, 0.9);
+                color: var(--text-dark);
+            }
+
+
+
+            /* Responsive Search */
+            @media(min-width: 600px) {
+                .search-box {
+                    flex-direction: row;
+                }
+            }
+
+            /* Animated SVG Background */
+            .svg-bg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+                opacity: 0.15;
+            }
+
+            .hero-content {
+                position: relative;
+                z-index: 1;
+            }
+        </style>
+
+
+        <!-- ===============================================HERO-SECTION -->
+
+        <div class="container mt-5">
+            <h4 class="text-center">List of Best MBA Specializations Available in India</h4>
+            <p>Choosing the right MBA specialization is one of the most important decisions in shaping a successful
+                management career. Today, MBA programs in India are designed to match industry demands and evolving
+                global business trends, ensuring that students are well-prepared for leadership roles in diverse
+                sectors. The best MBA specializations in India offer opportunities in high-growth areas such as
+                Marketing, Finance, Human Resource Management, Business Analytics, International Business, and
+                Operations Management — each designed to equip students with the skills needed to thrive in a
+                competitive business world.<br>
+                <br>
+                For students looking to pursue their MBA in India, business schools and universities offer a wide range
+                of specialized programs tailored to meet individual career aspirations. Whether it’s a focus on
+                entrepreneurship and innovation, digital marketing, supply chain management, or healthcare
+                administration, these top MBA specializations in India are structured to align with current market needs
+                and emerging business opportunities. Students can choose a specialization that matches their interests,
+                strengths, and long-term career goals.<br>
+                <br>
+                In today’s dynamic corporate environment, selecting the right MBA specialization can offer a significant
+                competitive advantage. Some of the most in-demand MBA specializations in India include Business
+                Analytics, Financial Management, Information Technology, and International Business. These areas cater
+                to industries experiencing rapid growth and digital transformation, ensuring that graduates are prepared
+                for impactful careers with global organizations.<br>
+                <br>
+                Moreover, India’s leading business schools emphasize practical learning, case-based pedagogy, and
+                industry internships that provide real-world exposure across different management domains. Students
+                pursuing the best MBA specializations gain not only academic excellence but also the confidence and
+                strategic insight required to lead organizations effectively.<br>
+                <br>
+                Whether you’re aiming to become a marketing strategist, financial analyst, HR leader, or business
+                consultant, the list of top MBA specializations available in India offers endless opportunities to shape
+                your professional journey. With the right choice of specialization, students can unlock pathways to
+                leadership, innovation, and global success.
+            </p>
+        </div>
+        </div>
+
+
+        <!-- ============================================specialization cards -->
+
+        <div class="container py-5">
+            <div class="row g-4 justify-content-center">
+                <!-- Card 1 -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="special-card text-center p-4">
+                        <img src="specializations-imgs/Marketing.svg" alt="Medical" width="130">
+                        <h5 class="mt-3 fw-bold">Marketing Management</h5>
+
+                        <div class="d-flex justify-content-between mt-3">
+                            <button class="main-btn">Apply Now</button>
+                            <button class="outline-btn p-1">
+                                View More
+                                <svg class="arrow-icon" viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Card 2 -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="special-card text-center p-4">
+                        <img src="specializations-imgs/Finance.svg" alt="Dental" width="120">
+                        <h5 class="mt-3 fw-bold">Finance</h5>
+                        <div class="d-flex justify-content-between mt-3">
+                            <button class="main-btn">Apply Now</button>
+                            <button class="outline-btn p-1">
+                                View More
+                                <svg class="arrow-icon" viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="special-card text-center p-4">
+                        <img src="specializations-imgs/Human Resource.svg" alt="Medical" width="120">
+                        <h5 class="mt-3 fw-bold">Human Resource</h5>
+                        <div class="d-flex justify-content-between mt-3">
+                            <button class="main-btn">Apply Now</button>
+                            <button class="outline-btn p-1">
+                                View More
+                                <svg class="arrow-icon" viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="special-card text-center p-4">
+                        <img src="specializations-imgs/International Business.svg" alt="Dental" width="120">
+                        <h5 class="mt-3 fw-bold">International Business</h5>
+                        <div class="d-flex justify-content-between mt-3">
+                            <button class="main-btn">Apply Now</button>
+                            <button class="outline-btn p-1">
+                                View More
+                                <svg class="arrow-icon" viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="special-card text-center p-4">
+                        <img src="specializations-imgs/Operations Management.svg" alt="Medical" width="100">
+                        <h5 class="mt-3 fw-bold">Operations Management</h5>
+                        <div class="d-flex justify-content-between mt-3">
+                            <button class="main-btn">Apply Now</button>
+                            <button class="outline-btn p-1">
+                                View More
+                                <svg class="arrow-icon" viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="special-card text-center p-4">
+                        <img src="specializations-imgs/Information Technology.svg" alt="Dental" width="100">
+                        <h5 class="mt-3 fw-bold">Information Technology</h5>
+                        <div class="d-flex justify-content-between mt-3">
+                            <button class="main-btn">Apply Now</button>
+                            <button class="outline-btn p-1">
+                                View More
+                                <svg class="arrow-icon" viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 1 -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="special-card text-center p-4">
+                        <img src="specializations-imgs/Business Analytics.svg" alt="Medical" width="100">
+                        <h5 class="mt-3 fw-bold">Business Analytics</h5>
+                        <div class="d-flex justify-content-between mt-3">
+                            <button class="main-btn">Apply Now</button>
+                            <button class="outline-btn p-1">
+                                View More
+                                <svg class="arrow-icon" viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="special-card text-center p-4">
+                        <img src="specializations-imgs/Entrepreneurship.svg" alt="Dental" width="100">
+                        <h5 class="mt-3 fw-bold">Entrepreneurship</h5>
+                        <div class="d-flex justify-content-between mt-3">
+                            <button class="main-btn">Apply Now</button>
+                            <button class="outline-btn p-1">
+                                View More
+                                <svg class="arrow-icon" viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z" />
+                                </svg>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more cards similarly -->
+            </div>
+        </div>
+
+
+        <style>
+            :root {
+                --orange: #ff6600;
+            }
+
+            .outline-btn {
+                position: relative;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 3px;
+                font-size: 14px;
+                font-weight: 600;
+                color: var(--orange);
+                background: #fff;
+                border: 2px solid var(--orange) !important;
+                border-radius: 50px;
+                cursor: pointer;
+                overflow: hidden;
+                transition: all 0.4s ease;
+                isolation: isolate;
+            }
+
+            /* Animated background on hover */
+            .outline-btn::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: var(--orange);
+                border-radius: 50px;
+                transform: translateY(-50%) scale(1);
+                transition: all 0.6s ease;
+                z-index: -1;
+
+            }
+
+            .outline-btn:hover::before {
+                left: 0;
+                transform: translateY(-50%) scale(1.4);
+            }
+
+            .outline-btn:hover {
+                color: #fff;
+                border-style: solid;
+            }
+
+            /* Arrow icon animation */
+            .outline-btn .arrow-icon {
+                width: 20px;
+                height: 20px;
+                padding: 4px;
+                border-radius: 50%;
+                transform: rotate(45deg);
+                transition: all 0.4s ease;
+                fill: var(--orange);
+            }
+
+            .outline-btn:hover .arrow-icon {
+                background: #fff;
+                fill: var(--orange);
+                border: none;
+                transform: rotate(90deg);
+            }
+
+            .special-card h5 {
+                color: rgb(0, 0, 0);
+                font-weight: 400 !important;
+            }
+
+
+            /* When the card is hovered, also affect the h5 */
+            .special-card:hover h5 {
+                color: rgb(0, 0, 0);
+                font-weight: 400 !important;
+            }
+
+            .special-card {
+                background: #fff;
+                border: 1px solid #d9e2f1;
+                border-radius: 5px;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+                transition: 0.3s;
+            }
+
+            .special-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+                color: #000 !important;
+                border: 6px solid linear-gradient(90deg, #0036a4, #006aff, #00a2ff) !;
+            }
+
+
+            /* .special-card img {
+                filter: brightness(0) saturate(100%) invert(21%) sepia(87%) saturate(1860%) hue-rotate(203deg) brightness(92%) contrast(101%);
+            } */
+
+            .main-btn {
+                background: linear-gradient(90deg, var(--blue), rgb(15, 135, 209));
+                color: #fff;
+                border: none;
+                padding: 3px 5px;
+                border-radius: 8px;
+                margin: 8px 0;
+                font-weight: 600;
+
+            }
+
+            .outline-btn {
+                background: #ffffff;
+                color: var(--orange);
+                border: none;
+                padding: 3px 2px !important;
+                border-radius: 8px;
+                margin: 8px 0;
+                font-weight: 600;
+                border: 2px dashed var(--orange);
+            }
+
+
+            @media (max-width: 768px) {
+                .special-card {
+                    margin-bottom: 20px;
+                }
+            }
+        </style>
+
+        <!-- -==================================================FOOTER SECTION -->
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <!-- Logo & Info -->
+                    <div class="col-lg-4 col-md-6 mb-4 left-text">
+                        <div class="footer-logo mb-3">
+                            <img src="Top MBA Study Logo_Color.svg" alt="">
+                        </div>
+                        <p>Dream. Apply. Achieve.<br>
+                            Our Expert Admission Guidance is the Bridge that Connects You to a Brighter Future.</p>
+                        <p><i class="fa fa-phone me-2"></i>1800 120 8696</p>
+                        <p><i class="fa fa-envelope me-2"></i>info@topmbastudy.com</p>
+                        <p><i class="fa fa-map-marker-alt me-2"></i>#80 (4), 'D' Main Rd, East End, 9th
+                            Block,<br>Jayanagar,
+                            Bangalore, Karnataka - 560041</p>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="col-lg-2 col-md-6 mb-4 pt-5">
+                        <h6 class="footer-title">Info</h6>
+                        <ul class="list-unstyled">
+                             <li><a href="#"><i class="fa-solid fa-angles-right"></i> About us</a></li>
+                        <li><a href="specializations.html"><i class="fa-solid fa-angles-right"></i> specializations</a></li>
+                        <li><a href="exams.html"><i class="fa-solid fa-angles-right"></i> exams</a></li>
+                        <li><a href="courses.html"><i class="fa-solid fa-angles-right"></i> top colleges</a></li>
+                        <li><a href="index.html"><i class="fa-solid fa-angles-right"></i> home</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="col-lg-2 col-md-6 mb-4  pt-5">
+                        <h6 class="footer-title">Quick Links</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="#"><i class="fa-solid fa-angles-right"></i> Blogs</a></li>
+                            <li><a href="#"><i class="fa-solid fa-angles-right"></i> NRI Quota</a></li>
+                            <li><a href="#"><i class="fa-solid fa-angles-right"></i> Study Abroad</a></li>
+                            <li><a href="#"><i class="fa-solid fa-angles-right"></i> Scholarships</a></li>
+                            <li><a href="#"><i class="fa-solid fa-angles-right"></i> Student's Speak</a></li>
+                            <li><a href="#"><i class="fa-solid fa-angles-right"></i> Education Loan</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Legal -->
+                    <div class="col-lg-2 col-md-6 mb-4 pt-5">
+                        <h6 class="footer-title">Legal</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="#"><i class="fa-solid fa-angles-right"></i> Feed</a></li>
+                            <li><a href="#"><i class="fa-solid fa-angles-right"></i> Disclaimer</a></li>
+                            <li><a href="#"><i class="fa-solid fa-angles-right"></i> Privacy Policy</a></li>
+                            <li><a href="#"><i class="fa-solid fa-angles-right"></i> Terms & Conditions</a></li>
+                            <li><a href="#"><i class="fa-solid fa-angles-right"></i> Advertise With Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Download App -->
+                    <div class="col-lg-2 col-md-6 mb-4  pt-5">
+                        <h6 class="footer-title">Download Our App</h6>
+                        <div class="download-btn">
+                            <a href="#"><img
+                                    src="https://www.learntechww.com/_next/image?url=%2Fimages%2Ficons%2Fapp-store.webp&w=384&q=75"
+                                    alt="App Store"></a><br>
+                            <a href="#"><img
+                                    src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                                    alt="Google Play"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Download Brochure -->
+                <div class="text-center">
+                    <a href="#" class="download-brochure">📄 Download Brochure</a>
+                </div>
+
+                <!-- Copyright -->
+                <div class="footer-bottom mt-4 d-flex justify-content-between align-items-center left-text">
+                    <p class="mb-0">©2025 Learntech Edu Solutions Pvt. Ltd. All Rights Reserved.</p>
+
+                    <div class="d-flex align-items-center ">
+                        <p class="mb-0 me-2">Follow us on</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
+        <style>
+            /* -----------------------------------footer css code */
+            .footer {
+                background-color: #0c2a45;
+                color: #fff;
+                padding: 40px 20px 20px;
+                font-family: "Poppins", sans-serif;
+            }
+
+            .footer a {
+                color: #fff;
+                text-decoration: none;
+                transition: 0.3s;
+                font-size: 15px;
+                font-weight: 300;
+            }
+
+            .footer a:hover {
+                color: #f1a470;
+            }
+
+            .footer-logo img {
+                height: 100px;
+                align-items: start;
+            }
+
+            .footer .footer-title {
+                font-weight: 600;
+                margin-bottom: 15px;
+                font-size: 20px;
+            }
+
+            .footer .download-btn img {
+                max-width: 140px;
+                margin-bottom: 10px;
+            }
+
+            .footer .social-icons a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: #fff;
+                color: #0b2a66;
+                margin: 0 5px;
+                font-size: 16px;
+            }
+
+            .footer .social-icons a:hover {
+                background: #cdddf7;
+            }
+
+            .footer-bottom {
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+                margin-top: 30px;
+                padding-top: 15px;
+                text-align: center;
+                font-size: 14px;
+                display: flex;
+            }
+
+            .download-brochure {
+                display: inline-block;
+                padding: 10px 20px;
+                background: #000f34;
+                color: #0b2a66;
+                border-radius: 8px;
+                font-weight: 500;
+                text-decoration: none;
+                border: 2px solid rgb(255, 255, 255);
+                transition: all 0.3s ease;
+                /* smooth transition for all properties */
+                border-radius: 50px;
+            }
+
+            .download-brochure:hover {
+
+                /* subtle zoom */
+                color: #ffffff;
+                /* optional color change on hover */
+                background: #0b2a66;
+                /* optional background change on hover */
+                border-color: #001a4f;
+                /* optional border change */
+            }
+
+
+            .text-right {
+                display: flex;
+                justify-content: flex-end;
+                /* pushes content to the right */
+                align-items: flex-end;
+                /* vertically centers if needed */
+            }
+
+            .footer-bottom {
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                /* optional separator */
+                padding-top: 15px;
+                font-size: 14px;
+                color: #fff;
+            }
+
+            .footer-bottom .social-icons a {
+                color: #000000;
+                margin-left: 12px;
+                font-size: 16px;
+                transition: color 0.3s;
+            }
+
+            .footer-bottom .social-icons a:hover {
+                color: #f1a470;
+                /* highlight on hover */
+            }
+
+            .left-text p {
+                font-size: 16px;
+            }
+
+            .footer p {
+                color: white;
+            }
+
+            .form-bg {
+                background-color: #000124;
+                border-top-left-radius: 50px;
+                border-bottom-right-radius: 50px;
+            }
+        </style>
+
+        <!-- =======================================================scripts below -->
+        <!-- Bootstrap 5.3.3 JS Bundle (with Popper) -->
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+
+    </body>
+
+</html>

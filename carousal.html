@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>carousal</title>
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #ffffff;
+    color: #333;
+}
+h2{
+  font-size: 45px;
+}
+
+h1,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+p,li {
+    margin-bottom: 1rem;
+    font-size: 18px;
+}
+
+
+a {
+    color: #0d6efd;
+    /* Bootstrap primary */
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: #0a58ca;
+    text-decoration: underline;
+}
+
+
+.text-center {
+    text-align: center;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+
+.btn-custom {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: #0d6efd;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+    background: #0a58ca;
+    transform: translateY(-2px);
+}
+
+/* Layout Helpers */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+
+/*------------------------------------------------ NAVBAR CSS */
+
+
+.navbar {
+  background: #fff;
+  padding: 0.8rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between; /* Logo left, hamburger/nav right */
+  align-items: center;
+  width: 100%;
+}
+
+.logo img {
+  max-height: 50px;
+  width: auto;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links li a {
+  color: #000;
+  text-decoration: none;
+  font-size: 1.1rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #0889cd;
+}
+
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #0889cd, #f89029);
+  transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+
+.hamburger {
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: none;
+  color: #0889cd;
+  margin-left: auto; /* Push to far right */
+}
+
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background: linear-gradient(135deg, #0889cd, #f89029);
+    text-align: center;
+    display: none;
+    padding: 1rem 0;
+    gap: 1.5rem;
+    z-index: 999;
+  }
+
+  .nav-links li a {
+    color: #fff; /* White links on gradient */
+    font-size: 1.2rem;
+  }
+
+  /* When active */
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+
+.btn-enquiry {
+  display: inline-block;
+  padding: 0.5rem 0.5rem;
+  background: linear-gradient(135deg, #0889cd, #f89029);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn-enquiry:hover {
+  background: linear-gradient(135deg, #f89029, #0889cd);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+  text-decoration: none;
+  color: white;
+}
+
+
+
+.contact-block p {
+  margin: 0;            
+  line-height: 1.4;
+}
+
+.contact-block p + p {
+  margin-top: 1px;      
+}
+
+.contact-block a {
+  color: #f68f2f;      
+  text-decoration: none;
+}
+
+.contact-block a:hover {
+  text-decoration: underline;
+}
+
+
+/* Top Contact Bar */
+.top-contact {
+  background: linear-gradient(135deg, #0889cd, #f89029);
+  color: #fff;
+  padding: 0.3rem 1rem;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+.contact-block {
+  display: flex;
+    justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap:70px;
+}
+
+.contact-block p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.contact-block p + p {
+  margin-top: 1px; /* 1px gap */
+}
+
+.contact-block a {
+  color: #000000ca;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-block a:hover {
+  text-decoration: none;
+}
+
+
+.slide-item {
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: slideIn 0.6s forwards;
+}
+
+.slide-item:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.slide-item:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.slide-item:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.slide-item:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.slide-item:nth-child(5) {
+  animation-delay: 1s;
+}
+.slide-item:nth-child(6) {
+  animation-delay: 1.2s;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.top-contact .contact-block a {
+  display: inline-block;
+  padding: 0.5em 0.8em;
+  color: rgb(255, 255, 255);
+  position: relative;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 0.2em 0;
+  transition: all 0.35s ease;
+}
+
+.top-contact .contact-block a::before,
+.top-contact .contact-block a::after {
+  content: '';
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  transition: all 0.35s ease;
+  opacity: 0;
+}
+
+.top-contact .contact-block a::before {
+  right: 0;
+  top: 0;
+  border-top: 3px solid #31c5ff;
+  border-right: 3px solid #ffa939;
+  transform: translate(-100%, 50%);
+}
+
+.top-contact .contact-block a::after {
+  left: 0;
+  bottom: 0;
+  border-bottom: 3px solid #31c5ff;
+  border-left: 3px solid #ffa939;
+  transform: translate(100%, -50%);
+}
+
+.top-contact .contact-block a:hover::before,
+.top-contact .contact-block a:hover::after {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.top-contact .contact-block a:hover {
+  color: #313131;
+}
+
+
+.hero-carousel {
+  position: relative;
+  width: 100%;
+  height: 80vh; 
+  overflow: hidden;
+}
+
+.hero-carousel .carousel-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hero-carousel .carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.hero-carousel .carousel-item.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+ .bg-img{
+  width: 100%;
+  height: 81.5vh;
+  object-fit: cover;
+  border-radius: 0;
+  filter: brightness(60%);
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  max-width: 450px;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.modern-search {
+  display: flex;
+  gap: 15px;
+}
+
+.modern-search input {
+  flex: 1;
+  padding: 15px;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.modern-search input:focus {
+  box-shadow: 0 0 20px #f89029;
+}
+
+.modern-search button {
+  padding: 0 25px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, #0889cd, #f89029);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modern-search button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #f89029, #0889cd);
+  transition: width 0.3s ease;
+}
+
+/* Container style */
+.four-box .flip-box {
+  perspective: 1000px;
+  height: 200px;      
+}
+
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+
+.flip-box:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+
+.flip-front, .flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+
+.flip-front {
+  background: linear-gradient(135deg, #0889cd, #f89029);
+}
+
+.flip-back {
+  background: linear-gradient(135deg, #f89029, #0889cd);
+  transform: rotateY(180deg);
+}
+
+
+
+/* ------------------------------------3 boxes */
+
+.info-box {
+  display: flex;
+  flex-direction: column;   
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 10px;
+  width: 100%;
+  max-width: 300px; 
+  min-height: 300px;
+  background: white;
+  border-radius: 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  padding: 20px;
+  text-align: center;
+  transition: 1s box-shadow;
+  border: 2px solid rgb(42, 145, 182);
+}
+
+.info-box:hover {
+  box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
+}
+
+.info-box:hover::before, 
+.info-box:hover::after {
+  display: block;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f89029, #0889cd);
+  border-radius: 25px;
+  z-index: -1;
+  animation: 1s clockwise infinite;
+}
+
+.info-box:hover:after {
+  background: linear-gradient(135deg, #f89029, #0889cd);
+  animation: 2s counterclockwise infinite;
+}
+
+/* KEYFRAMES */
+@keyframes clockwise {
+  0%   { top: -10px; left: 0; }
+  25%  { top: 0; left: 10px; }
+  50%  { top: 5px; left: 0; }
+  75%  { top: 0; left: -10px; }
+  100% { top: -10px; left: 0; }
+}
+
+@keyframes counterclockwise {
+  0%   { top: -10px; right: 0; }
+  25%  { top: 0; right: 10px; }
+  50%  { top: 10px; right: 0; }
+  75%  { top: 0; right: -10px; }
+  100% { top: -10px; right: 0; }
+}
+
+
+/* -------------------------------------------------form */
+
+
+.form-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 20px 20px rgba(235, 136, 7, 0.762);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-card:hover {
+  box-shadow: 0 12px 30px rgba(1, 221, 255, 0.667);
+}
+
+.form-label {
+  font-weight: 500;
+  color: #333;
+}
+
+
+
+
+.btn i{
+  font-size: 25px;
+  color: rgb(58, 58, 58);
+}
+
+.our-services{
+ background: rgba(10, 163, 218, 0.153);
+ border-top-right-radius: 100px;
+ border-bottom-left-radius: 100px;
+ color: rgb(56, 56, 56);
+}
+
+.card-college {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 15px;
+  max-width: 350px;   
+  margin: auto;
+}
+
+.card-college:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.card-college img {
+  width: 100%;
+  height: 180px;     
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.5s ease; 
+}
+
+.card-college:hover img {
+  transform: scale(1.08); 
+}
+
+.card-body {
+  padding: 0px;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.card-body h4 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.card-body p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.btn {
+  flex: 1;
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 500;
+  border: 1px solid #000;
+  color: #000;
+  background: transparent;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color .3s;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 0;
+  background: linear-gradient(100deg, #0889cd, #f89029);
+  transition: width .3s;
+  color: white;
+  z-index: -1;
+}
+
+.btn:hover::before {
+  width: 100%;
+}
+
+.btn:hover {
+  color: #fff;
+}
+
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #00aaff;
+  transition: color 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #ffae00;
+}
+
+</style>
+
+<body>
+
+  <!-- <nav class="navbar">
+    <div class="nav-container">
+
+      <div class="logo">
+        <img src="https://www.keralastudy.com/images/logo.png" alt="logo">
+      </div>
+
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Admissions</a></li>
+        <li><a href="#">Departments</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+
+      <div class="contact-block">
+        <p>
+          Toll Free No:
+          <a href="tel:18001208696" aria-label="Toll free number 1800 120 8696">1800-120-8696</a>
+        </p>
+        <p>
+          For Enquiry:
+          <a href="tel:+919036020016" aria-label="Enquiry number +91 90360 20016">+91-9036020016</a>
+        </p>
+      </div>
+
+
+      <a href="tel:+919036020016" class="btn-enquiry" aria-label="Call enquiry number">
+        Enquiry Now
+      </a>
+
+    </div>
+  </nav>
+
+
+  <div class="top-contact">
+    <div class="contact-block">
+      <p class="slide-item">
+        <a href="tel:18001208696">Dental College</a>
+      </p>
+      <p class="slide-item">
+        <a href="tel:+919036020016">Engineering College</a>
+      </p>
+      <p class="slide-item">
+        <a href="tel:18001208696">Nursing College</a>
+      </p>
+      <p class="slide-item">
+        <a href="tel:+919036020016">Medical College</a>
+      </p>
+      <p class="slide-item">
+        <a href="tel:18001208696">MBA College</a>
+      </p>
+      <p class="slide-item">
+        <a href="tel:+919036020016">Law College</a>
+      </p>
+    </div>
+  </div>
+
+  <img data-aos="fade-down" data-aos-easing="linear" data-aos-duration="800" class="bg-img"
+    src="https://images.pexels.com/photos/3471028/pexels-photo-3471028.jpeg" alt="Slide 1">
+
+
+
+  <div class="hero-content">
+    <h1 data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500"
+      class="display-2 fw-bold">Find Your College</h1>
+    <p data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="1000"
+      class="lead">Search and explore top colleges </p>
+    <div data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="1500"
+      class="modern-search">
+      <input type="text" placeholder="Search colleges...">
+      <button>Search</button>
+    </div>
+
+  </div>
+  </div>
+  <div class="four-box container-fluid p-0">
+    <div class="row g-0">
+      <div class="col-3">
+        <div class="flip-box">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <img src="costumer.png" alt="">
+              TESTIMONIAL
+            </div>
+            <div class="flip-back">
+              Submit
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="flip-box">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <img src="admission.png" alt="">
+              ADMISSION
+            </div>
+            <div class="flip-back">
+              ENQUIRY
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="flip-box">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <img src="graduation-hat.png" alt="">
+              DEEMED/PRIVATE
+            </div>
+            <div class="flip-back">
+              GOVT UNIVERSITIES
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="flip-box">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <img src="fail.png" alt="">
+              ENTRANCE EXAM
+            </div>
+            <div class="flip-back">
+              REACH OUT
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+<!-- 
+  <section class="mb-5 pb-5 pt-5">
+    <div class="container mt-5">
+      <h1 class="text-center mb-5">ABOUT US AND OUR REACH</h1>
+      <div class="row gx-5">
+
+        <div class="col-12 col-md-4">
+          <div class="info-box">
+            <img src="college.png" alt="Icon 1">
+            <h3>Colleges</h3>
+            <p>Get complete information from the list of Courses to Amenities of various Colleges in Karnataka. Find the
+              college of your choice from over 900+ colleges.</p>
+          </div>
+        </div>
+
+
+        <div class="col-12 col-md-4">
+          <div class="info-box">
+            <img src="organization.png" alt="Icon 2">
+            <h3>Universities</h3>
+            <p>Explore all the Central, State and Private Universities of Karnataka to know more about courses offered,
+              scholarships and other information.</p>
+          </div>
+        </div>
+
+
+        <div class="col-12 col-md-4">
+          <div class="info-box">
+            <img src="exam.png" alt="Icon 3">
+            <h3>Exams</h3>
+            <p>Find all the latest information about different entrance exams. Search for any national level or state
+              level entrance exams to know the eligibility criteria.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="our-services  py-5">
+    <div class="container-fluid px-5">
+      <div class="row">
+
+
+        <div class="col-12 col-md-8">
+          <h2>Our Services</h2>
+          <p>
+            Bangalorestudy.com is an information portal that caters to all the needs of students
+            looking for admissions in Bangalore, Mysore, Davanagere and other districts of Karnataka.
+          </p>
+          <ul>
+            <li>Educational Counselling to Students</li>
+            <li>Seat Reservation Facilities</li>
+            <li>Direct Meeting with College Authorities</li>
+            <li>Assistance to Secure Educational Loans and Scholarships</li>
+            <li>Pre and Post-Admission Care</li>
+            <li>Guidance to Pay Fees in Easy EMIs</li>
+          </ul>
+        </div>
+
+
+        <div class="col-12 col-md-4">
+          <div class="form-card p-4">
+            <form>
+
+              <div class="mb-3">
+
+                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+              </div>
+
+
+              <div class="mb-3">
+
+                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+              </div>
+
+
+              <div class="mb-3">
+
+                <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+              </div>
+
+
+              <div class="mb-3">
+
+                <input type="text" class="form-control" id="course" placeholder="Enter course interested in">
+              </div>
+
+
+              <div class="mb-3">
+
+                <input type="text" class="form-control" id="location" placeholder="Enter your location">
+              </div>
+
+
+              <div class="mb-3">
+
+                <textarea class="form-control" id="message" rows="3" placeholder="Write your message"></textarea>
+              </div>
+
+
+              <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section> -->
+
+  <section class="college-slider py-5">
+    <div class="container-fluid">
+      <h2 class="text-center mb-4">Our Colleges</h2>
+
+
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+
+
+          <div class="swiper-slide">
+            <div class="card-college">
+              <img src="https://api.bangalorestudy.com:3000/collegegallery/image1679996475650.png" alt="College 1">
+              <div class="card-body">
+                <h4>Engineering College</h4>
+                <p>Top-ranked institute with world-class facilities.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn "><i class="fa-solid fa-magnifying-glass-arrow-right"></i></button>
+                  <button class="btn ">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="swiper-slide">
+            <div class="card-college">
+              <img src="https://api.bangalorestudy.com:3000/collegegallery/image1679996238255.png" alt="College 2">
+              <div class="card-body">
+                <h4>Medical College</h4>
+                <p>State-of-the-art hospital training and research.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn "><i class="fa-solid fa-magnifying-glass-arrow-right"></i></button>
+                  <button class="btn ">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="card-college">
+              <img src="https://api.bangalorestudy.com:3000/collegegallery/image1679996749771.png" alt="College 3">
+              <div class="card-body">
+                <h4>Law College</h4>
+                <p>Leaders in legal education and advocacy.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn "><i class="fa-solid fa-magnifying-glass-arrow-right"></i></button>
+                  <button class="btn ">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="swiper-slide">
+            <div class="card-college">
+              <img src="https://api.bangalorestudy.com:3000/collegegallery/image1679996706148.png" alt="College 4">
+              <div class="card-body ">
+                <h4>Dental College</h4>
+                <p>Modern dental research and clinical training.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn "><i class="fa-solid fa-magnifying-glass-arrow-right"></i></button>
+                  <button class="btn ">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="card-college">
+              <img src=" https://api.bangalorestudy.com:3000/collegegallery/image1679996706148.png" alt="College 4">
+              <div class="card-body">
+                <h4>Dental College</h4>
+                <p>Modern dental research and clinical training.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn "><i class="fa-solid fa-magnifying-glass-arrow-right"></i></button>
+                  <button class="btn ">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="card-college">
+              <img src="https://api.bangalorestudy.com:3000/collegegallery/image1679996672266.png" alt="College 4">
+              <div class="card-body">
+                <h4>Dental College</h4>
+                <p>Modern dental research and clinical training.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn "><i class="fa-solid fa-magnifying-glass-arrow-right"></i></button>
+                  <button class="btn ">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="card-college">
+              <img src="https://api.bangalorestudy.com:3000/collegegallery/image1679996834736.png" alt="College 4">
+              <div class="card-body">
+                <h4>Dental College</h4>
+                <p>Modern dental research and clinical training.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn "><i class="fa-solid fa-magnifying-glass-arrow-right"></i></button>
+                  <button class="btn ">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="card-college">
+              <img src="https://api.bangalorestudy.com:3000/collegegallery/image1679996869869.png" alt="College 4">
+              <div class="card-body">
+                <h4>Dental College</h4>
+                <p>Modern dental research and clinical training.</p>
+                <div class="d-flex gap-2">
+                  <button class="btn "><i class="fa-solid fa-magnifying-glass-arrow-right"></i></button>
+                  <button class="btn ">Apply</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 
+<section> 
+<div class="card">
+  <div class="content">
+    <p class="heading">Card</p>
+    <p class="para">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi laboriosam
+      at voluptas minus culpa deserunt delectus sapiente inventore pariatur
+    </p>
+  </div>
+</div>
+
+</section> -->
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.1/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+    AOS.init({
+      once: true,
+      duration: 1000,
+      easing: 'ease-in-out',
+    });
+  </script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      loop: true,
+      slidesPerView: 4,
+      spaceBetween: 30,
+      autoplay: {
+        delay: 2000,
+        disableOnInteraction: false,
+      },
+      speed: 800, 
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        0: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        992: { slidesPerView: 3 },
+        1200: { slidesPerView: 4 }
+      }
+    });
+
+
+    const cards = document.querySelectorAll(".swiper-slide");
+    cards.forEach(card => {
+      card.addEventListener("mouseenter", () => {
+        swiper.autoplay.stop();
+      });
+      card.addEventListener("mouseleave", () => {
+        swiper.autoplay.start();
+      });
+    });
+
+  </script>
+</body>
+
+</html>
